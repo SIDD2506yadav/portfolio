@@ -10,6 +10,7 @@ import { ProcessSection } from "./components/portfolio/ProcessSection";
 import { ScrollProgress } from "./components/portfolio/ScrollProgress";
 import { WorkSection } from "./components/portfolio/WorkSection";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ChatWidget } from "./components/portfolio/ChatWidget";
 
 export default function App() {
   // #28 — Fade the technical-grid out as user scrolls into content
@@ -50,6 +51,7 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
