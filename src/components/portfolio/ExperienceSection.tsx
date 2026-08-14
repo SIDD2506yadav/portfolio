@@ -1,8 +1,26 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { experience } from "./data";
 import { Reveal } from "./Reveal";
 import { SectionIntro } from "./SectionIntro";
 
+// #14 — Stagger variants for highlight bullet points
+const listVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: "easeOut" as const },
+  },
+};
+
 export function ExperienceSection() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section
       id="experience"
@@ -29,17 +47,25 @@ export function ExperienceSection() {
                   {job.range}
                 </p>
               </div>
-              <ul className="space-y-3">
+              {/* #14 — Staggered bullet list */}
+              <motion.ul
+                variants={reducedMotion ? undefined : listVariants}
+                initial={reducedMotion ? false : "hidden"}
+                whileInView={reducedMotion ? undefined : "visible"}
+                viewport={{ once: true, amount: 0.3 }}
+                className="space-y-3"
+              >
                 {job.highlights.map((highlight) => (
-                  <li
+                  <motion.li
                     key={highlight}
+                    variants={reducedMotion ? undefined : itemVariants}
                     className="flex gap-3 text-sm leading-6 text-mist"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
                     {highlight}
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </article>
           </Reveal>
         ))}

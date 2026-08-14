@@ -4,6 +4,9 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { navItems } from "./data";
 
+// #21 — Read availability from env. Set VITE_AVAILABLE=true to show the badge.
+const isAvailable = import.meta.env.VITE_AVAILABLE === "true";
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
@@ -12,13 +15,27 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 border-b border-line/70 bg-ink/75 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-          <a
-            href="#top"
-            className="font-display text-lg font-semibold tracking-[-0.06em] text-slate-50"
-            onClick={closeMenu}
-          >
-            siddhartha<span className="text-cyan">.</span>
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#top"
+              className="font-display text-lg font-semibold tracking-[-0.06em] text-slate-50"
+              onClick={closeMenu}
+            >
+              siddhartha<span className="text-cyan">.</span>
+            </a>
+            {/* #21 — Availability indicator */}
+            {isAvailable && (
+              <span className="hidden items-center gap-1.5 sm:inline-flex">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-emerald-400">
+                  Available
+                </span>
+              </span>
+            )}
+          </div>
           <nav
             className="hidden items-center gap-1 md:flex"
             aria-label="Main navigation"

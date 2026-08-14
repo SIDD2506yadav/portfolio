@@ -41,7 +41,7 @@ export function CapabilityMap() {
                     aria-selected={isActive}
                     aria-controls={`${area.id}-panel`}
                     onClick={() => setActiveId(area.id)}
-                    className={`group border-b border-r border-line p-5 text-left transition-colors sm:p-6 ${isActive ? "bg-cyan/10" : "hover:bg-cyan/[0.035]"}`}
+                    className={`group relative border-b border-r border-line p-5 text-left transition-colors sm:p-6 ${isActive ? "bg-cyan/10" : "hover:bg-cyan/[0.035]"}`}
                   >
                     <Icon
                       className={`h-5 w-5 transition-transform duration-300 ${isActive ? "scale-110 text-cyan" : "text-mist group-hover:text-cyan"}`}
@@ -55,6 +55,19 @@ export function CapabilityMap() {
                     <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-mist">
                       Explore area
                     </p>
+
+                    {/* #15 — layoutId sliding active fill indicator */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="capability-active-pill"
+                        className="absolute inset-0 border-2 border-cyan/40 bg-cyan/10"
+                        transition={
+                          reducedMotion
+                            ? { duration: 0 }
+                            : { type: "spring", stiffness: 380, damping: 32 }
+                        }
+                      />
+                    )}
                   </button>
                 );
               })}

@@ -46,6 +46,18 @@
   .contact-link {
     @apply inline-flex items-center gap-2 text-sm text-mist transition-colors hover:text-cyan;
   }
+
+  /* #11 — Section divider gradient rule */
+  .section-rule {
+    @apply mx-auto max-w-6xl px-5 sm:px-8;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(34, 211, 238, 0.18),
+      transparent
+    );
+  }
 }
 
 .technical-grid {
@@ -56,6 +68,21 @@
   mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
 }
 
+/* #18 — Blinking terminal cursor */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-start infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -64,5 +91,10 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .cursor-blink {
+    animation: none;
+    opacity: 1;
   }
 }
