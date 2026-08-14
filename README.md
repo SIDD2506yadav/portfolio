@@ -9,40 +9,31 @@ This portfolio showcases Siddhartha's experience, technical capabilities, select
 > **Screenshot placeholders:** Replace the paths below with your actual screenshots once they are added to the repository. A suggested `docs/screenshots/` structure is included for easy organization.
 
 ### Hero / Landing Page
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/7e84f7ca-52e8-48a2-9cc2-c31219838508" />
 
-![Portfolio hero screenshot](docs/screenshots/hero.png)
-
-*Replace with a screenshot showing the main hero section, animated headline, project selector, and overall visual design.*
 
 ### About & Experience
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/af9985a3-3605-471c-9452-b86e274b91ba" />
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/7a0c1afc-c079-44d8-a2cf-f803317297ce" />
 
-![About and experience screenshot](docs/screenshots/about-experience.png)
-
-*Replace with a screenshot showing the About and Experience sections.*
 
 ### Capabilities
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/fdbb09b1-4569-4a24-83ef-ec1ac79d2688" />
 
-![Capabilities screenshot](docs/screenshots/capabilities.png)
-
-*Replace with a screenshot showing the Frontend, Backend, AI, and Cloud capability cards.*
 
 ### Selected Work
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/47c35b05-4d2b-40ef-8518-6e82cdccaf8b" />
 
-![Selected work screenshot](docs/screenshots/work.png)
-
-*Replace with a screenshot showing the project cards, technology tags, previews, and live-site links.*
 
 ### AI Portfolio Assistant
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/bd3d7221-1e7b-40ea-b06f-097aa77a1e84" />
 
-![AI chat screenshot](docs/screenshots/ai-chat.png)
-
-*Replace with a screenshot showing the floating AI assistant, conversation starters, and Markdown-formatted response.*
 
 ### Mobile / Responsive View
+<img width="373" height="669" alt="image" src="https://github.com/user-attachments/assets/2c84cbe5-dfe7-422e-8922-c706132e9595" /> <img width="373" height="669" alt="image" src="https://github.com/user-attachments/assets/5fb46b1b-d9d3-41fe-bb54-b3b0a020df71" /> <img width="373" height="669" alt="image" src="https://github.com/user-attachments/assets/f6925c19-1193-49de-b081-1f451e9a5602" />
 
-![Mobile responsive screenshot](docs/screenshots/mobile.png)
 
-*Replace with a mobile screenshot demonstrating the responsive layout and interactions.*
+
 
 > **Tip:** If you do not want to commit screenshots yet, you can keep these placeholders as-is. Once images are available, add them under `docs/screenshots/` using the filenames above and they will automatically render on GitHub.
 
