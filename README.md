@@ -4,6 +4,48 @@
 
 This portfolio showcases Siddhartha's experience, technical capabilities, selected work, development process, and contact information while providing an interactive AI assistant for questions about his professional background.
 
+## 📸 Screenshots
+
+> **Screenshot placeholders:** Replace the paths below with your actual screenshots once they are added to the repository. A suggested `docs/screenshots/` structure is included for easy organization.
+
+### Hero / Landing Page
+
+![Portfolio hero screenshot](docs/screenshots/hero.png)
+
+*Replace with a screenshot showing the main hero section, animated headline, project selector, and overall visual design.*
+
+### About & Experience
+
+![About and experience screenshot](docs/screenshots/about-experience.png)
+
+*Replace with a screenshot showing the About and Experience sections.*
+
+### Capabilities
+
+![Capabilities screenshot](docs/screenshots/capabilities.png)
+
+*Replace with a screenshot showing the Frontend, Backend, AI, and Cloud capability cards.*
+
+### Selected Work
+
+![Selected work screenshot](docs/screenshots/work.png)
+
+*Replace with a screenshot showing the project cards, technology tags, previews, and live-site links.*
+
+### AI Portfolio Assistant
+
+![AI chat screenshot](docs/screenshots/ai-chat.png)
+
+*Replace with a screenshot showing the floating AI assistant, conversation starters, and Markdown-formatted response.*
+
+### Mobile / Responsive View
+
+![Mobile responsive screenshot](docs/screenshots/mobile.png)
+
+*Replace with a mobile screenshot demonstrating the responsive layout and interactions.*
+
+> **Tip:** If you do not want to commit screenshots yet, you can keep these placeholders as-is. Once images are available, add them under `docs/screenshots/` using the filenames above and they will automatically render on GitHub.
+
 ## ✨ Features
 
 ### Portfolio experience
@@ -92,6 +134,14 @@ The AI assistant is backed by a Vercel serverless function at `/api/chat`.
 .
 ├── api/
 │   └── chat.ts                    # Serverless AI chat endpoint
+├── docs/
+│   └── screenshots/               # README screenshot assets
+│       ├── hero.png
+│       ├── about-experience.png
+│       ├── capabilities.png
+│       ├── work.png
+│       ├── ai-chat.png
+│       └── mobile.png
 ├── public/
 │   ├── Resume.pdf                 # Downloadable resume
 │   ├── favicon.svg                # Site favicon
