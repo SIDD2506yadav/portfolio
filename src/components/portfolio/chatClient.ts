@@ -18,9 +18,7 @@ export class ChatApiError extends Error {
   }
 }
 
-export async function sendChatMessage(
-  messages: ChatMessage[],
-): Promise<string> {
+export async function sendChatMessage(messages: ChatMessage[]): Promise<string> {
   const response = await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
