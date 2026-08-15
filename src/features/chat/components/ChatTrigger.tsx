@@ -1,12 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { useChat } from "../ChatProvider";
+import type { ChatOpenOptions } from "../types";
 
 type ChatTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
+  chatOptions?: ChatOpenOptions;
 };
 
 /** Reusable trigger for opening the portfolio assistant from any feature. */
-export function ChatTrigger({ children, onClick, ...props }: ChatTriggerProps) {
+export function ChatTrigger({ children, onClick, chatOptions, ...props }: ChatTriggerProps) {
   const { openChat } = useChat();
 
   return (
@@ -14,7 +16,7 @@ export function ChatTrigger({ children, onClick, ...props }: ChatTriggerProps) {
       {...props}
       type={props.type ?? "button"}
       onClick={(event) => {
-        openChat();
+        openChat(chatOptions);
         onClick?.(event);
       }}
     >
