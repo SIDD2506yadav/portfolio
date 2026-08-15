@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { storySections } from "./data";
+import { storySections } from "@/data/story";
 
 /** #19 — Section-aware scroll dot navigator */
 export function ScrollProgress() {

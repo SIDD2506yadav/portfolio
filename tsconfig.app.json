@@ -15,7 +15,11 @@
     "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }
