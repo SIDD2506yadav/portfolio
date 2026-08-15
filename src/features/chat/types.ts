@@ -8,6 +8,8 @@ export type ChatOpenOptions = {
 };
 
 export type ChatController = {
+  isOpen: boolean;
+  initialPrompt?: string;
   openChat: (options?: ChatOpenOptions) => void;
   closeChat: () => void;
   toggleChat: () => void;
