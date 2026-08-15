@@ -3,7 +3,11 @@ export type ChatMessage = {
   content: string;
 };
 
+export type ChatOpenOptions = {
+  initialPrompt?: string;
+};
+
 export type ChatController = {
-  openChat: () => void;
+  openChat: (options?: ChatOpenOptions) => void;
   closeChat: () => void;
 };
