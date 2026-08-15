@@ -3,14 +3,9 @@ export type ChatMessage = {
   content: string;
 };
 
-export type ChatOpenOptions = {
-  initialPrompt?: string;
-};
-
 export type ChatController = {
   isOpen: boolean;
-  initialPrompt?: string;
-  openChat: (options?: ChatOpenOptions) => void;
+  openChat: () => void;
   closeChat: () => void;
   toggleChat: () => void;
 };
