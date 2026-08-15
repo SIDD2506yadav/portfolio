@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+/* #29 — Font loaded via <link> + preconnect in index.html instead of @import (was render-blocking and added an extra request hop) */
 
 @tailwind base;
 @tailwind components;

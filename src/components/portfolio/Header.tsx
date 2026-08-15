@@ -102,6 +102,8 @@ export function Header() {
             variant="ghost"
             size="icon"
             aria-label="Close navigation menu"
+            /* #31 — keep this out of the tab order while the panel is aria-hidden */
+            tabIndex={isMenuOpen ? 0 : -1}
             onClick={closeMenu}
           >
             <X className="h-5 w-5" />
@@ -113,6 +115,7 @@ export function Header() {
               key={item}
               href={`#${item.toLowerCase()}`}
               onClick={closeMenu}
+              tabIndex={isMenuOpen ? 0 : -1}
               className="group flex items-center justify-between rounded-sm border-b border-line/70 py-4 font-display text-2xl tracking-[-0.045em] text-slate-200 transition-colors hover:text-cyan"
             >
               <span>{item}</span>
@@ -126,6 +129,7 @@ export function Header() {
           className="mt-auto inline-flex items-center gap-2 font-mono text-xs text-cyan hover:text-white"
           href="mailto:siddhartha.yadav.1042@gmail.com"
           onClick={closeMenu}
+          tabIndex={isMenuOpen ? 0 : -1}
         >
           say hello <ArrowUpRight className="h-3.5 w-3.5" />
         </a>

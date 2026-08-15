@@ -66,6 +66,13 @@ function ProjectCard({
             <motion.img
               src={project.image}
               alt={`${project.title} preview`} /* #24 — dynamic alt */
+              /* #34 — intrinsic size reserves layout space (avoids CLS); lazy
+                 + async decoding defers this off-screen image until needed
+                 (fixes Lighthouse image-delivery / unused-bytes warnings) */
+              width={1280}
+              height={678}
+              loading="lazy"
+              decoding="async"
               style={reducedMotion ? undefined : { y: imgTranslateY }}
               className="aspect-[16/8.5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />

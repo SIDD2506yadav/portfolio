@@ -572,7 +572,8 @@ export function ChatWidget() {
                     scale: 0.985,
                   }
             }
-            aria-label="Open Siddhartha's AI assistant"
+            /* #32 — accessible name now includes the visible label text (fixes label-content-name-mismatch) */
+            aria-label="Ask me about my work — open Siddhartha's AI assistant"
             className="
               group
               relative

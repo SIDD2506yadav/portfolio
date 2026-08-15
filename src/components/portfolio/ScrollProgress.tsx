@@ -42,7 +42,7 @@ export function ScrollProgress() {
   return (
     <nav
       aria-label="Section navigation"
-      className="pointer-events-auto fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex"
+      className="pointer-events-auto fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center lg:flex"
     >
       {dots.map((section) => {
         const isActive = activeSection === section;
@@ -51,7 +51,8 @@ export function ScrollProgress() {
             key={section}
             href={`#${section}`}
             aria-label={`Go to ${section} section`}
-            className="group flex items-center justify-center"
+            /* #30 — p-2 grows the tap target to 24x24px (was an 8x8px dot, failed Lighthouse target-size) */
+            className="group flex items-center justify-center p-2"
           >
             <motion.span
               animate={

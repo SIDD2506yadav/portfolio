@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { AboutSection } from "./components/portfolio/AboutSection";
 import { CapabilityMap } from "./components/portfolio/CapabilityMap";
 import { ContactSection } from "./components/portfolio/ContactSection";
@@ -10,7 +11,14 @@ import { ProcessSection } from "./components/portfolio/ProcessSection";
 import { ScrollProgress } from "./components/portfolio/ScrollProgress";
 import { WorkSection } from "./components/portfolio/WorkSection";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChatWidget } from "./components/portfolio/ChatWidget";
+
+// #33 — Code-split the chat widget: react-markdown + remark-gfm (~350KB
+// unminified) are only needed once a visitor actually opens the chat.
+const ChatWidget = lazy(() =>
+  import("./components/portfolio/ChatWidget").then((mod) => ({
+    default: mod.ChatWidget,
+  })),
+);
 
 export default function App() {
   // #28 — Fade the technical-grid out as user scrolls into content
@@ -51,7 +59,9 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </div>
   );
 }
