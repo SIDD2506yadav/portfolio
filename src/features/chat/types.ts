@@ -4,8 +4,6 @@ export type ChatMessage = {
 };
 
 export type ChatController = {
-  isOpen: boolean;
   openChat: () => void;
   closeChat: () => void;
-  toggleChat: () => void;
 };
