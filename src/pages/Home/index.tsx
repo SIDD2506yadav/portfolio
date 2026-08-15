@@ -1,14 +1,12 @@
-import {
-  AboutSection,
-  CapabilityMap,
-  ContactSection,
-  ExperienceSection,
-  HeroSection,
-  ProcessSection,
-  WorkSection,
-} from "./components";
+import { AboutSection } from "@/components/AboutSection";
+import { CapabilityMap } from "@/components/CapabilityMap";
+import { ContactSection } from "@/components/ContactSection";
+import { ExperienceSection } from "@/components/ExperienceSection";
+import { HeroSection } from "@/components/HeroSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { WorkSection } from "@/components/WorkSection";
 
-export function PortfolioHome() {
+export default function Home() {
   return (
     <>
       <HeroSection />

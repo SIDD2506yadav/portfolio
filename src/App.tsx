@@ -1,9 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { CursorGlow } from "./components/portfolio/CursorGlow";
-import { ScrollProgress } from "./components/portfolio/ScrollProgress";
-import { ChatProvider, ChatWidgetAdapter } from "./features/chat";
-import { PortfolioHome } from "./features/portfolio";
-import { AppShell } from "./layout/AppShell";
+import { CursorGlow } from "@/components/CursorGlow";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { ChatWidget } from "@/components/Chat/ChatWidget";
+import { ChatProvider } from "@/providers/ChatProvider";
+import Home from "@/pages/Home";
+import { AppShell } from "@/layout/AppShell";
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -27,10 +28,10 @@ export default function App() {
         <ScrollProgress />
 
         <AppShell>
-          <PortfolioHome />
+          <Home />
         </AppShell>
 
-        <ChatWidgetAdapter />
+        <ChatWidget />
       </div>
     </ChatProvider>
   );
