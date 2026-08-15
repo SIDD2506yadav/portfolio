@@ -6,30 +6,20 @@ import {
   useState,
 } from "react";
 import type { ReactNode } from "react";
-import type { ChatController, ChatOpenOptions } from "./types";
+import type { ChatController } from "./types";
 
 const ChatContext = createContext<ChatController | null>(null);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [initialPrompt, setInitialPrompt] = useState<string | undefined>();
 
-  const openChat = useCallback((options?: ChatOpenOptions) => {
-    setInitialPrompt(options?.initialPrompt);
-    setIsOpen(true);
-  }, []);
-
-  const closeChat = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const toggleChat = useCallback(() => {
-    setIsOpen((open) => !open);
-  }, []);
+  const openChat = useCallback(() => setIsOpen(true), []);
+  const closeChat = useCallback(() => setIsOpen(false), []);
+  const toggleChat = useCallback(() => setIsOpen((open) => !open), []);
 
   const value = useMemo<ChatController>(
-    () => ({ isOpen, initialPrompt, openChat, closeChat, toggleChat }),
-    [isOpen, initialPrompt, openChat, closeChat, toggleChat],
+    () => ({ isOpen, openChat, closeChat, toggleChat }),
+    [isOpen, openChat, closeChat, toggleChat],
   );
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
