@@ -4,4 +4,4 @@ export type {
   ChatMessage,
   ChatOpenOptions,
 } from "./types";
-export { sendChatMessage, ChatApiError } from "../../components/portfolio/chatClient";
+export { sendChatMessage, ChatApiError } from "./services/chatApi";
