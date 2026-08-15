@@ -1,5 +1,5 @@
 export { AboutSection } from "../../../components/portfolio/AboutSection";
-export { CapabilityMap } from "../../../components/portfolio/CapabilityMap";
+export { CapabilityMap } from "./CapabilityMap";
 export { ContactSection } from "../../../components/portfolio/ContactSection";
 export { ExperienceSection } from "../../../components/portfolio/ExperienceSection";
 export { HeroSection } from "../../../components/portfolio/HeroSection";
