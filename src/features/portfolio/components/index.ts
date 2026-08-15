@@ -1,4 +1,4 @@
-export { AboutSection } from "../../../components/portfolio/AboutSection";
+export { AboutSection } from "./AboutSection";
 export { CapabilityMap } from "./CapabilityMap";
 export { ContactSection } from "../../../components/portfolio/ContactSection";
 export { ExperienceSection } from "../../../components/portfolio/ExperienceSection";
