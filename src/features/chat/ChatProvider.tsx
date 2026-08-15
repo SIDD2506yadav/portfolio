@@ -8,21 +8,38 @@ import {
 import type { ReactNode } from "react";
 import type { ChatController } from "./types";
 
+export type ChatCommandState = {
+  openRequest: number;
+  closeRequest: number;
+};
+
 const ChatContext = createContext<ChatController | null>(null);
+const ChatCommandContext = createContext<ChatCommandState | null>(null);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openRequest, setOpenRequest] = useState(0);
+  const [closeRequest, setCloseRequest] = useState(0);
 
-  const openChat = useCallback(() => setIsOpen(true), []);
-  const closeChat = useCallback(() => setIsOpen(false), []);
-  const toggleChat = useCallback(() => setIsOpen((open) => !open), []);
+  const openChat = useCallback(() => setOpenRequest((request) => request + 1), []);
+  const closeChat = useCallback(() => setCloseRequest((request) => request + 1), []);
 
-  const value = useMemo<ChatController>(
-    () => ({ isOpen, openChat, closeChat, toggleChat }),
-    [isOpen, openChat, closeChat, toggleChat],
+  const controller = useMemo<ChatController>(
+    () => ({ openChat, closeChat }),
+    [openChat, closeChat],
   );
 
-  return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
+  const commands = useMemo(
+    () => ({ openRequest, closeRequest }),
+    [openRequest, closeRequest],
+  );
+
+  return (
+    <ChatContext.Provider value={controller}>
+      <ChatCommandContext.Provider value={commands}>
+        {children}
+      </ChatCommandContext.Provider>
+    </ChatContext.Provider>
+  );
 }
 
 export function useChat(): ChatController {
@@ -30,6 +47,16 @@ export function useChat(): ChatController {
 
   if (!context) {
     throw new Error("useChat must be used within a ChatProvider");
+  }
+
+  return context;
+}
+
+export function useChatCommands(): ChatCommandState {
+  const context = useContext(ChatCommandContext);
+
+  if (!context) {
+    throw new Error("useChatCommands must be used within a ChatProvider");
   }
 
   return context;
