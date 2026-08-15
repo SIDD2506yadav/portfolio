@@ -1,18 +1,9 @@
-import { lazy, Suspense } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CursorGlow } from "./components/portfolio/CursorGlow";
 import { ScrollProgress } from "./components/portfolio/ScrollProgress";
-import { AppShell } from "./layout/AppShell";
+import { ChatProvider, ChatWidgetAdapter } from "./features/chat";
 import { PortfolioHome } from "./features/portfolio";
-import { ChatProvider } from "./features/chat";
-
-// Code-split the chat feature so markdown dependencies are loaded only when
-// the chat UI itself is needed.
-const ChatWidget = lazy(() =>
-  import("./components/portfolio/ChatWidget").then((mod) => ({
-    default: mod.ChatWidget,
-  })),
-);
+import { AppShell } from "./layout/AppShell";
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -39,9 +30,7 @@ export default function App() {
           <PortfolioHome />
         </AppShell>
 
-        <Suspense fallback={null}>
-          <ChatWidget />
-        </Suspense>
+        <ChatWidgetAdapter />
       </div>
     </ChatProvider>
   );
