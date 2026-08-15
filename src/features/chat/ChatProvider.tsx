@@ -6,11 +6,12 @@ import {
   useState,
 } from "react";
 import type { ReactNode } from "react";
-import type { ChatController } from "./types";
+import type { ChatController, ChatOpenOptions } from "./types";
 
 export type ChatCommandState = {
   openRequest: number;
   closeRequest: number;
+  openOptions?: ChatOpenOptions;
 };
 
 const ChatContext = createContext<ChatController | null>(null);
@@ -19,8 +20,13 @@ const ChatCommandContext = createContext<ChatCommandState | null>(null);
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [openRequest, setOpenRequest] = useState(0);
   const [closeRequest, setCloseRequest] = useState(0);
+  const [openOptions, setOpenOptions] = useState<ChatOpenOptions | undefined>();
 
-  const openChat = useCallback(() => setOpenRequest((request) => request + 1), []);
+  const openChat = useCallback((options?: ChatOpenOptions) => {
+    setOpenOptions(options);
+    setOpenRequest((request) => request + 1);
+  }, []);
+
   const closeChat = useCallback(() => setCloseRequest((request) => request + 1), []);
 
   const controller = useMemo<ChatController>(
@@ -29,8 +35,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   );
 
   const commands = useMemo(
-    () => ({ openRequest, closeRequest }),
-    [openRequest, closeRequest],
+    () => ({ openRequest, closeRequest, openOptions }),
+    [openRequest, closeRequest, openOptions],
   );
 
   return (
