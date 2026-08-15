@@ -28,35 +28,11 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<ChatController>(
-    () => ({ openChat, closeChat, toggleChat }),
-    [openChat, closeChat, toggleChat],
+    () => ({ isOpen, initialPrompt, openChat, closeChat, toggleChat }),
+    [isOpen, initialPrompt, openChat, closeChat, toggleChat],
   );
 
-  return (
-    <ChatContext.Provider value={value}>
-      <ChatStateBridge isOpen={isOpen} initialPrompt={initialPrompt} />
-      {children}
-    </ChatContext.Provider>
-  );
-}
-
-/**
- * The legacy ChatWidget currently owns its visual state. This bridge exposes
- * the feature-level controller without coupling callers to that component.
- * The widget migration can consume this state directly in the next step.
- */
-function ChatStateBridge({
-  isOpen,
-  initialPrompt,
-}: {
-  isOpen: boolean;
-  initialPrompt?: string;
-}) {
-  if (typeof window !== "undefined") {
-    window.__portfolioChat = { isOpen, initialPrompt };
-  }
-
-  return null;
+  return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 }
 
 export function useChat(): ChatController {
