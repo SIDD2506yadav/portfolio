@@ -10,6 +10,26 @@ const LegacyChatWidget = lazy(() =>
 const OPEN_SELECTOR = '[aria-label^="Ask me about my work"]';
 const CLOSE_SELECTOR = '[aria-label="Close chat"]';
 
+function clickWhenAvailable(selector: string) {
+  let attempts = 0;
+
+  const tryClick = () => {
+    const button = document.querySelector<HTMLButtonElement>(selector);
+
+    if (button) {
+      button.click();
+      return;
+    }
+
+    attempts += 1;
+    if (attempts < 30) {
+      window.requestAnimationFrame(tryClick);
+    }
+  };
+
+  window.requestAnimationFrame(tryClick);
+}
+
 /**
  * Transitional adapter for the existing chat UI.
  *
@@ -22,17 +42,11 @@ export function ChatWidgetAdapter() {
   const { openRequest, closeRequest } = useChatCommands();
 
   useEffect(() => {
-    if (openRequest === 0) return;
-
-    const button = document.querySelector<HTMLButtonElement>(OPEN_SELECTOR);
-    button?.click();
+    if (openRequest > 0) clickWhenAvailable(OPEN_SELECTOR);
   }, [openRequest]);
 
   useEffect(() => {
-    if (closeRequest === 0) return;
-
-    const button = document.querySelector<HTMLButtonElement>(CLOSE_SELECTOR);
-    button?.click();
+    if (closeRequest > 0) clickWhenAvailable(CLOSE_SELECTOR);
   }, [closeRequest]);
 
   return (
