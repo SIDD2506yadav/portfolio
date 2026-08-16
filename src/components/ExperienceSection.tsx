@@ -24,12 +24,18 @@ export function ExperienceSection() {
                 <motion.ul variants={reducedMotion ? undefined : listVariants} initial={reducedMotion ? false : "hidden"} whileInView={reducedMotion ? undefined : "visible"} viewport={{ once: true, amount: 0.3 }} className="space-y-3">
                   {job.highlights.map((highlight) => <motion.li key={highlight} variants={reducedMotion ? undefined : itemVariants} className="flex gap-3 text-sm leading-6 text-mist"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />{highlight}</motion.li>)}
                 </motion.ul>
-                <div className="mt-6 flex flex-wrap gap-2" aria-label={`${job.company} technologies`}>
-                  {job.technologies.map((technology) => (
-                    <span key={technology} className="rounded-full border border-line bg-white/[0.02] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-mist">
-                      {technology}
-                    </span>
-                  ))}
+                <div className="mt-7" aria-label={`${job.company} technologies`}>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-mist">Stack</p>
+                  <div className="flex flex-wrap gap-2">
+                    {job.technologies.map((technology) => (
+                      <span
+                        key={technology}
+                        className="border border-line bg-white/[0.02] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-mist [clip-path:polygon(5px_0,100%_0,calc(100%_-_5px)_100%,0_100%)] transition-colors hover:border-cyan/60 hover:text-slate-100"
+                      >
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </article>
