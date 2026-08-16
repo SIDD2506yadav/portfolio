@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { capabilityAreas, supportingCapabilities } from "@/data/capabilities";
+import { Button } from "./ui/button";
 import { Reveal } from "./Reveal";
 import { SectionIntro } from "./SectionIntro";
 
@@ -20,7 +21,7 @@ export function CapabilityMap() {
               {capabilityAreas.map((area) => {
                 const Icon = area.icon;
                 const isActive = area.id === activeId;
-                return <button key={area.id} id={`${area.id}-tab`} type="button" role="tab" aria-selected={isActive} aria-controls={`${area.id}-panel`} onClick={() => setActiveId(area.id)} className={`group relative border-b border-r border-line p-5 text-left transition-colors sm:p-6 ${isActive ? "bg-cyan/10" : "hover:bg-cyan/[0.035]"}`}><Icon className={`h-5 w-5 transition-transform duration-300 ${isActive ? "scale-110 text-cyan" : "text-mist group-hover:text-cyan"}`} strokeWidth={1.5} /><p className={`mt-10 font-display text-xl tracking-[-0.035em] ${isActive ? "text-cyan" : "text-slate-100"}`}>{area.label}</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-mist">Explore area</p>{isActive && <motion.div layoutId="capability-active-pill" className="absolute inset-0 border-2 border-cyan/40 bg-cyan/10" transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 32 }} />}</button>;
+                return <Button key={area.id} id={`${area.id}-tab`} type="button" role="tab" aria-selected={isActive} aria-controls={`${area.id}-panel`} onClick={() => setActiveId(area.id)} variant="ghost" className={`group relative h-auto w-full justify-start rounded-none border-b border-r border-line p-5 text-left font-normal sm:p-6 ${isActive ? "bg-cyan/10" : "hover:bg-cyan/[0.035]"}`}><Icon className={`h-5 w-5 transition-transform duration-300 ${isActive ? "scale-110 text-cyan" : "text-mist group-hover:text-cyan"}`} strokeWidth={1.5} /><p className={`mt-10 font-display text-xl tracking-[-0.035em] ${isActive ? "text-cyan" : "text-slate-100"}`}>{area.label}</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-mist">Explore area</p>{isActive && <motion.div layoutId="capability-active-pill" className="absolute inset-0 border-2 border-cyan/40 bg-cyan/10" transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 32 }} />}</Button>;
               })}
             </div>
             <motion.div key={activeArea.id} id={`${activeArea.id}-panel`} role="tabpanel" aria-labelledby={`${activeArea.id}-tab`} initial={reducedMotion ? false : { opacity: 0, x: 12 }} animate={reducedMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.28 }} className="relative overflow-hidden border border-line bg-ink/50 p-6 sm:p-8">
