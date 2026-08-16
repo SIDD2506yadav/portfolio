@@ -30,7 +30,7 @@ export function ExperienceSection() {
                     {job.technologies.map((technology) => (
                       <span
                         key={technology}
-                        className="border border-line bg-white/[0.02] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-mist [clip-path:polygon(5px_0,100%_0,calc(100%_-_5px)_100%,0_100%)] transition-colors hover:border-cyan/60 hover:text-slate-100"
+                        className="rounded-sm border border-line bg-panel/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-mist transition-all hover:border-cyan hover:text-cyan"
                       >
                         {technology}
                       </span>
