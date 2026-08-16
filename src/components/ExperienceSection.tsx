@@ -15,10 +15,23 @@ export function ExperienceSection() {
         {experience.map((job, index) => (
           <Reveal key={job.company} delay={index * 0.08}>
             <article className="grid gap-6 py-8 md:grid-cols-[0.8fr_1.4fr] md:py-10">
-              <div><p className="font-display text-xl tracking-[-0.03em] text-slate-100">{job.role}</p><p className="mt-1 text-sm text-cyan">{job.company}</p><p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-mist">{job.range}</p></div>
-              <motion.ul variants={reducedMotion ? undefined : listVariants} initial={reducedMotion ? false : "hidden"} whileInView={reducedMotion ? undefined : "visible"} viewport={{ once: true, amount: 0.3 }} className="space-y-3">
-                {job.highlights.map((highlight) => <motion.li key={highlight} variants={reducedMotion ? undefined : itemVariants} className="flex gap-3 text-sm leading-6 text-mist"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />{highlight}</motion.li>)}
-              </motion.ul>
+              <div>
+                <p className="font-display text-xl tracking-[-0.03em] text-slate-100">{job.role}</p>
+                <p className="mt-1 text-sm text-cyan">{job.company}</p>
+                <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-mist">{job.range}</p>
+              </div>
+              <div>
+                <motion.ul variants={reducedMotion ? undefined : listVariants} initial={reducedMotion ? false : "hidden"} whileInView={reducedMotion ? undefined : "visible"} viewport={{ once: true, amount: 0.3 }} className="space-y-3">
+                  {job.highlights.map((highlight) => <motion.li key={highlight} variants={reducedMotion ? undefined : itemVariants} className="flex gap-3 text-sm leading-6 text-mist"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />{highlight}</motion.li>)}
+                </motion.ul>
+                <div className="mt-6 flex flex-wrap gap-2" aria-label={`${job.company} technologies`}>
+                  {job.technologies.map((technology) => (
+                    <span key={technology} className="rounded-full border border-line bg-white/[0.02] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-mist">
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </article>
           </Reveal>
         ))}
