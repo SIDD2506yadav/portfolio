@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { buildOptions } from "@/data/buildOptions";
 import { Reveal } from "./Reveal";
@@ -30,7 +30,10 @@ export function HeroSection() {
   const activeBuild =
     buildOptions.find((option) => option.id === selectedBuild) ??
     buildOptions[0];
-  const radioRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  function focusOption(id: string) {
+    document.getElementById(`${id}-build-option`)?.focus();
+  }
 
   function handleOptionKeyDown(
     e: React.KeyboardEvent<HTMLButtonElement>,
@@ -41,12 +44,12 @@ export function HeroSection() {
       e.preventDefault();
       const next = (index + 1) % count;
       setSelectedBuild(buildOptions[next].id);
-      radioRefs.current[next]?.focus();
+      focusOption(buildOptions[next].id);
     } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
       const prev = (index - 1 + count) % count;
       setSelectedBuild(buildOptions[prev].id);
-      radioRefs.current[prev]?.focus();
+      focusOption(buildOptions[prev].id);
     }
   }
 
@@ -74,7 +77,7 @@ export function HeroSection() {
               <p className="flex items-center font-mono text-xs text-slate-300"><span className="mr-2 text-cyan">&gt;</span>what do you need built?<span className="ml-1 inline-block h-3.5 w-[2px] translate-y-px bg-cyan cursor-blink" aria-hidden="true" /></p>
               <div role="radiogroup" aria-label="Project type" className="mt-4 grid grid-cols-2 gap-2">
                 {buildOptions.map((option, index) => (
-                  <Button key={option.id} ref={(el) => { radioRefs.current[index] = el; }} type="button" role="radio" aria-checked={selectedBuild === option.id} onClick={() => setSelectedBuild(option.id)} onKeyDown={(e) => handleOptionKeyDown(e, index)} tabIndex={selectedBuild === option.id ? 0 : index === 0 && !buildOptions.some((o) => o.id === selectedBuild) ? 0 : -1} variant="ghost" className={`h-auto w-full justify-start rounded-none border px-3 py-2 text-left font-mono text-[10px] font-normal uppercase tracking-[0.08em] ${selectedBuild === option.id ? "border-cyan bg-cyan/10 text-cyan" : "border-line bg-ink/60 text-mist hover:border-cyan/70 hover:text-slate-100"}`}>{option.label}</Button>
+                  <Button key={option.id} id={`${option.id}-build-option`} type="button" role="radio" aria-checked={selectedBuild === option.id} onClick={() => setSelectedBuild(option.id)} onKeyDown={(e) => handleOptionKeyDown(e, index)} tabIndex={selectedBuild === option.id ? 0 : index === 0 && !buildOptions.some((o) => o.id === selectedBuild) ? 0 : -1} variant="ghost" className={`h-auto w-full justify-start rounded-none border px-3 py-2 text-left font-mono text-[10px] font-normal uppercase tracking-[0.08em] ${selectedBuild === option.id ? "border-cyan bg-cyan/10 text-cyan" : "border-line bg-ink/60 text-mist hover:border-cyan/70 hover:text-slate-100"}`}>{option.label}</Button>
                 ))}
               </div>
             </div>
