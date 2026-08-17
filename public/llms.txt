@@ -4,16 +4,16 @@
 
 ## Pages
 
-- [Home](https://portfolio-jade-omega-gsvdlixws8.vercel.app/): Overview, about, experience, capabilities, selected work, and contact.
-- [About](https://portfolio-jade-omega-gsvdlixws8.vercel.app/#about): Background and engineering approach.
-- [Experience](https://portfolio-jade-omega-gsvdlixws8.vercel.app/#experience): Professional experience and highlights.
-- [Capabilities](https://portfolio-jade-omega-gsvdlixws8.vercel.app/#capabilities): Frontend, backend, AI, and cloud skills.
-- [Work](https://portfolio-jade-omega-gsvdlixws8.vercel.app/#work): Selected projects, including Koflip.
-- [Contact](https://portfolio-jade-omega-gsvdlixws8.vercel.app/#contact): Email, GitHub, LinkedIn, and resume.
+- [Home](https://siddhartha-portfolio-dev.vercel.app/): Overview, about, experience, capabilities, selected work, and contact.
+- [About](https://siddhartha-portfolio-dev.vercel.app/#about): Background and engineering approach.
+- [Experience](https://siddhartha-portfolio-dev.vercel.app/#experience): Professional experience and highlights.
+- [Capabilities](https://siddhartha-portfolio-dev.vercel.app/#capabilities): Frontend, backend, AI, and cloud skills.
+- [Work](https://siddhartha-portfolio-dev.vercel.app/#work): Selected projects, including Koflip.
+- [Contact](https://siddhartha-portfolio-dev.vercel.app/#contact): Email, GitHub, LinkedIn, and resume.
 
 ## Resources
 
-- [Resume (PDF)](https://portfolio-jade-omega-gsvdlixws8.vercel.app/Resume.pdf): Downloadable resume.
+- [Resume (PDF)](https://siddhartha-portfolio-dev.vercel.app/Resume.pdf): Downloadable resume.
 - [GitHub](https://github.com/SIDD2506yadav): Source code and other projects.
 - [LinkedIn](https://www.linkedin.com/in/sidyadav2506/): Professional profile.
 
