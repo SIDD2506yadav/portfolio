@@ -12,7 +12,7 @@ export function Markdown({ content }: { content: string }) {
           </p>
         ),
 
-        // text-slate-100 
+        // text-slate-100
         strong: ({ children }) => (
           <strong className="font-semibold text-cyan">{children}</strong>
         ),
@@ -38,7 +38,10 @@ export function Markdown({ content }: { content: string }) {
         ),
 
         ul: ({ children }) => (
-          <ul className="my-2.5 space-y-1.5 pl-4 text-[13px] leading-5 text-slate-300 marker:text-cyan" style={{ listStyleType: "disc" }}>
+          <ul
+            className="my-2.5 space-y-1.5 pl-4 text-[13px] leading-5 text-slate-300 marker:text-cyan"
+            style={{ listStyleType: "disc" }}
+          >
             {children}
           </ul>
         ),

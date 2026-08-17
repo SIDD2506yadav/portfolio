@@ -6,7 +6,9 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main id="top" className="relative">{children}</main>
+      <main id="top" className="relative">
+        {children}
+      </main>
       <Footer />
     </>
   );

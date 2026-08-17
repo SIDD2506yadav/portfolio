@@ -1,6 +1,5 @@
 import {
   Bot,
-  Braces,
   Cloud,
   Code2,
   Layers3,

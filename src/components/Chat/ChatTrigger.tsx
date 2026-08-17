@@ -7,7 +7,23 @@ type ChatTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   chatOptions?: ChatOpenOptions;
 };
 
-export function ChatTrigger({ children, onClick, chatOptions, ...props }: ChatTriggerProps) {
+export function ChatTrigger({
+  children,
+  onClick,
+  chatOptions,
+  ...props
+}: ChatTriggerProps) {
   const { openChat } = useChat();
-  return <button {...props} type={props.type ?? "button"} onClick={(event) => { openChat(chatOptions); onClick?.(event); }}>{children}</button>;
+  return (
+    <button
+      {...props}
+      type={props.type ?? "button"}
+      onClick={(event) => {
+        openChat(chatOptions);
+        onClick?.(event);
+      }}
+    >
+      {children}
+    </button>
+  );
 }

@@ -11,7 +11,9 @@ export class ChatApiError extends Error {
   }
 }
 
-export async function sendChatMessage(messages: ChatMessage[]): Promise<string> {
+export async function sendChatMessage(
+  messages: ChatMessage[],
+): Promise<string> {
   const response = await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -19,10 +21,24 @@ export async function sendChatMessage(messages: ChatMessage[]): Promise<string> 
   });
 
   let data: ChatApiResponse = {};
-  try { data = (await response.json()) as ChatApiResponse; }
-  catch { throw new ChatApiError("The server returned an invalid response.", response.status); }
+  try {
+    data = (await response.json()) as ChatApiResponse;
+  } catch {
+    throw new ChatApiError(
+      "The server returned an invalid response.",
+      response.status,
+    );
+  }
 
-  if (!response.ok) throw new ChatApiError(data.error || "Unable to get a response right now.", response.status);
-  if (!data.reply) throw new ChatApiError("The assistant returned an empty response.", response.status);
+  if (!response.ok)
+    throw new ChatApiError(
+      data.error || "Unable to get a response right now.",
+      response.status,
+    );
+  if (!data.reply)
+    throw new ChatApiError(
+      "The assistant returned an empty response.",
+      response.status,
+    );
   return data.reply;
 }

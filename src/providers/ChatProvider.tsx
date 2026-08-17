@@ -21,9 +21,24 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     setOpenRequest((request) => request + 1);
   }, []);
 
-  const closeChat = useCallback(() => setCloseRequest((request) => request + 1), []);
-  const controller = useMemo<ChatController>(() => ({ openChat, closeChat }), [openChat, closeChat]);
-  const commands = useMemo(() => ({ openRequest, closeRequest, openOptions }), [openRequest, closeRequest, openOptions]);
+  const closeChat = useCallback(
+    () => setCloseRequest((request) => request + 1),
+    [],
+  );
+  const controller = useMemo<ChatController>(
+    () => ({ openChat, closeChat }),
+    [openChat, closeChat],
+  );
+  const commands = useMemo(
+    () => ({ openRequest, closeRequest, openOptions }),
+    [openRequest, closeRequest, openOptions],
+  );
 
-  return <ChatContext.Provider value={controller}><ChatCommandContext.Provider value={commands}>{children}</ChatCommandContext.Provider></ChatContext.Provider>;
+  return (
+    <ChatContext.Provider value={controller}>
+      <ChatCommandContext.Provider value={commands}>
+        {children}
+      </ChatCommandContext.Provider>
+    </ChatContext.Provider>
+  );
 }

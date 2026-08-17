@@ -1,4 +1,9 @@
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import { useEffect } from "react";
 
 export function App() {

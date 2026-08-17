@@ -11,6 +11,7 @@ export function useChat(): ChatController {
 
 export function useChatCommands(): ChatCommandState {
   const context = useContext(ChatCommandContext);
-  if (!context) throw new Error("useChatCommands must be used within a ChatProvider");
+  if (!context)
+    throw new Error("useChatCommands must be used within a ChatProvider");
   return context;
 }
