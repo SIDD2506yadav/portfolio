@@ -7,6 +7,7 @@ export const experience = [
       "Migrated a 50K+ line production codebase from React 16 to React 18 with zero downtime.",
       "Built visual automation workflows with JointJS for complex logic design.",
       "Reduced initial bundle size by 50% through Webpack optimization and lazy loading.",
+      "Designed and built an end-to-end agentic AI copilot for the SOAR platform, using self-hosted Ollama LLMs, tool-calling orchestration, and SSE streaming to let analysts analyze, edit, and execute automation playbooks through natural language.",
     ],
   },
   {
